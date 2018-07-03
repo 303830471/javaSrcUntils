@@ -111,7 +111,7 @@ public class JavaAgent extends AgentBase {
 						if (appdoc != null){
 							 StUserCompanyCode = appdoc.getItemValueString("StCompany");  //使用公司编码
 							 StInternalOrderHRID = appdoc.getItemValueString("StInternalOrderHRID");  //内部订单号
-							 if (!appdoc.getItemValueString("StPayTypeHRID").equals("")){   //资产所属成本中心号StPayTypeHRIDForZHICHAN【云计算特殊配置】
+							 if (!appdoc.getItemValueString("StPayTypeHRID").equals("")){   //资产所属成本中心号
 								 StPayTypeHRID = appdoc.getItemValueString("StPayTypeHRID"); 
 							 }else{
 								 StPayTypeHRID = appdoc.getItemValueString("StPayTypeHRID");  //成本中心号
@@ -131,7 +131,6 @@ public class JavaAgent extends AgentBase {
 						for(int i=0;i<UNIDS.length;i++){
 							mbdoc = mbdb.getDocumentByUNID(UNIDS[i]);
 							if (mbdoc !=null){
-								 // 写入结构【厂家：ManufacturerBuy；配置：ConfigureBuy；规格型号SizeModelBuy】mbdoc.getItemValueString("MtFactoryCode").equals("") || 
 								if (mbdoc.getItemValueString("MtMaterialDeion").equals("") || mbdoc.getItemValueString("MtMaterialNummer").equals("") ){
 									PrintMsg("error", "物料描述、物料号不能为空！");
 									return;
@@ -141,17 +140,7 @@ public class JavaAgent extends AgentBase {
 									System.out.print("产品名称/厂家= " + mbdoc.getItemValueString("MtMaterialDeion").replace(" ", "")+"/"+mbdoc.getItemValueString("ManufacturerBuy")+" 配置= "+mbdoc.getItemValueString("MtMaterialDeion")+" 规格型号= "+mbdoc.getItemValueString("MtMaterialNummer")+"00"+mbdoc.getItemValueString("MtOrderNummer"));
 									
 									JCO.Structure sFrom = inputParameterList.getStructure("ANLA");
-									/*sFrom.setValue("3000", "BUKRS");
-									sFrom.setValue("0012030003", "KOSTL");
-									sFrom.setValue("", "CAUFN");
-									sFrom.setValue("5000", "ANLKL");
-									sFrom.setValue("产品名称/55555555555", "TXT50");
-									sFrom.setValue("37686786878", "TXA50");
-									sFrom.setValue("1234354", "ANLHTXT");
-									sFrom.setValue("信息部", "INVNR");
-									sFrom.setValue("胡雷", "INVZU");
-									sFrom.setValue("", "GSBER");
-									sFrom.setValue("", "EAUFN");*/
+								
 									sFrom.setValue(StUserCompanyCode, "BUKRS");
 									sFrom.setValue(StPayTypeHRID, "KOSTL");
 									sFrom.setValue(StInternalOrderHRID, "CAUFN");
