@@ -1,6 +1,6 @@
 package javaTest;
 
-public class hulei {
+public class test {
 	//≤‚ ‘°£°£°£22233°£222
 	String intersss="";
 	String inteeersss="";
